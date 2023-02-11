@@ -1,2 +1,41 @@
 @import "./assets/colors.scss";
 
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: $custom-color-dark;
+  /* color of the tracking area */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: $custom-color-secondary;
+  /* color of the scroll thumb */
+  border-radius: 2rem;
+  /* roundness of the scroll thumb */
+}
+::selection {
+  color: $custom-color-dark;
+  background: $custom-color-secondary;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  color: $custom-color-white;
+}
+
+@import "./components/header/header.scss";
+@import "./components/hero/hero.scss";
