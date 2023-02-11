@@ -3,13 +3,13 @@ $custom-color-secondary: #ffcc03;
 $custom-color-tertiary: #3c59a5;
 $custom-color-quaternary: #0b294d;
 
-$custom-gradient-primary: linear-gradient(
+$custom-gradient-secondary: linear-gradient(
   135deg,
   $custom-color-tertiary 0%,
   $custom-color-quaternary 100%
 );
 
-$custom-gradient-secondary: linear-gradient(
+$custom-gradient-primary: linear-gradient(
   135deg,
   $custom-color-quaternary 0%,
   $custom-color-tertiary 100%
