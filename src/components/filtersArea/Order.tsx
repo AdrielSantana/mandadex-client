@@ -1,5 +1,5 @@
 import Form from "react-bootstrap/Form";
-import Favorite from "./Favorite";
+import Favorite from "../Favorite";
 
 const Order = () => {
   return (

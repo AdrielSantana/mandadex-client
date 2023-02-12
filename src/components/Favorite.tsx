@@ -5,7 +5,7 @@ import { useState } from "react";
 import { FaHeart } from "react-icons/fa";
 
 const Favorite = () => {
-  const [filterFavorite, setFilterFavorite] = useState<boolean>(true);
+  const [filterFavorite, setFilterFavorite] = useState<boolean>(false);
 
   const checkBackground = (filter: boolean): string => {
     return filter ? "#ffcc03" : "#BEBEBE";
