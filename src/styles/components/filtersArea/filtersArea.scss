@@ -71,7 +71,6 @@
 
 .filters-div {
   width: 100%;
-  margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -79,7 +78,7 @@
 }
 
 .filter-button {
-  margin-top: 10px;
+  margin-top: 2rem;
   font-size: 1.2rem;
   color: $custom-color-dark;
   width: 150px;
