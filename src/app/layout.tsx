@@ -1,3 +1,8 @@
+import "@/styles/main.scss";
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+import { AnalyticsWrapper } from "./components/analytics";
+
 import { Montserrat } from "@next/font/google";
 
 const montserrat = Montserrat({
@@ -15,7 +20,10 @@ export default function RootLayout({
   return (
     <html className={montserrat.className} lang="pt-br">
       <head />
-      <body>{children}</body>
+      <body>
+        {children}
+        <AnalyticsWrapper />
+      </body>
     </html>
   );
 }

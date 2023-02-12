@@ -1,0 +1,106 @@
+.filtersArea-section {
+  background-color: $custom-color-primary;
+  width: 100%;
+}
+
+.filtersArea-container {
+  padding: 4rem 0px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-direction: column;
+  p {
+    font-size: 1.5rem;
+  }
+}
+
+.filtersArea-title {
+  width: 100%;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 400;
+  span {
+    color: $custom-color-secondary;
+    font-weight: 700;
+  }
+}
+
+.order-select {
+  width: 160px;
+  height: 40px;
+  border-radius: 0.5rem 2rem !important;
+  filter: drop-shadow(0px 4px 4px $custom-color-shadow);
+  margin-left: 1rem;
+}
+
+.order-div {
+  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+    margin-bottom: 0rem;
+  }
+}
+
+.order-form-span {
+  flex-wrap: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorite-icon {
+  margin-left: 2rem;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 64px;
+  filter: drop-shadow(0px 4px 4px $custom-color-shadow);
+}
+
+.filters-title {
+  margin-bottom: 0;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.filters-div {
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.filter-button {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: $custom-color-dark;
+  width: 150px;
+  padding: 0.8rem 1rem;
+  border: 0px;
+  border-radius: 0.5rem 2rem;
+  filter: drop-shadow(0px 4px 4px $custom-color-shadow);
+}
+
+.filter-button-span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 20%;
+}
+
+@media (max-width: 396.5px) {
+  .filter-button {
+    width: 120px;
+  }
+  .filters-title {
+    text-align: center;
+  }
+}
