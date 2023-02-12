@@ -1,0 +1,36 @@
+footer {
+  background-color: $custom-color-primary;
+  width: 100%;
+  height: 100px;
+}
+
+.footer-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  p {
+    margin: 0;
+  }
+}
+
+.copy {
+  margin-right: 1rem;
+}
+
+.owner-text {
+  text-align: end;
+}
+
+.owner {
+  color: $custom-color-secondary;
+  font-style: italic;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.owner:hover {
+  color: $custom-color-dark;
+  transition: 0.3s;
+}
