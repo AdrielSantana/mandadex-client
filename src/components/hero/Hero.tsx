@@ -10,7 +10,7 @@ import pokeball from "/public/images/hero/pokeball-hero.png";
 const Hero = () => {
   return (
     <>
-      <section className="hero-section">
+      <section id="hero" className="hero-section">
         <Container className="hero-container">
           <Image className="pokeball-hero" alt="Pokeball" src={pokeball} />
           <RandomPokemon/>

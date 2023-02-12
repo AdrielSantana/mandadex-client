@@ -30,9 +30,9 @@ const Search = () => {
           />
         </motion.a>
 
-        <Form.Group className="search-bar" controlId="formBasicEmail">
+        <Form.Group controlId="formBasicEmail">
           <Form.Control
-            bsPrefix={`search-bar form-control`}
+            bsPrefix="search-bar form-control"
             type="text"
             placeholder="Buscar"
           />

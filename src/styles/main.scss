@@ -32,10 +32,11 @@
 
 html,
 body {
-  height: 100%;
+  height: auto;
   width: 100%;
   color: $custom-color-white;
 }
 
 @import "./components/header/header.scss";
 @import "./components/hero/hero.scss";
+@import "./components/filtersArea/filtersArea.scss";

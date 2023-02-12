@@ -11,7 +11,7 @@ const Header = () => {
       <header>
         <Container className="header-container">
           <Search />
-          <a href="#">
+          <a href="#hero">
             <Image alt="Logo" src={logo} className="logo" priority />
           </a>
         </Container>
