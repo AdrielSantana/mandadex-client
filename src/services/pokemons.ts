@@ -1,5 +1,3 @@
-import useSWR from "swr";
-
 export type Pokemon = {
   id: number;
   name: string;
