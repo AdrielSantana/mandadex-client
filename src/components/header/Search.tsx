@@ -9,7 +9,13 @@ const Search = () => {
   const [pokemonName, setPokemonName] = useState<string>("");
   const { setChangeData } = useFilter();
 
-  const handleSearch = () => {
+  const handleKeyPress = (event: any) => {
+    if (event.key == "Enter") {
+      handleClick();
+    }
+  };
+
+  const handleClick = () => {
     setChangeData(pokemonName);
   };
 
@@ -18,7 +24,7 @@ const Search = () => {
       <span className="search">
         <motion.a
           onClick={(e) => {
-            handleSearch();
+            handleClick();
           }}
           className="pointer"
           whileHover={{ scale: 1.05, rotate: -5 }}
@@ -38,6 +44,9 @@ const Search = () => {
         <Form.Group controlId="formBasicEmail">
           <Form.Control
             value={pokemonName}
+            onKeyDown={(e) => {
+              handleKeyPress(e);
+            }}
             onChange={(e) => setPokemonName(e.target.value)}
             bsPrefix="search-bar form-control"
             type="text"

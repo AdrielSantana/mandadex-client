@@ -1,5 +1,5 @@
 "use client";
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useFilter } from "@/hooks/useFilter";
 

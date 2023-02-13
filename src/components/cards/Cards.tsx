@@ -10,7 +10,7 @@ import { useFilter } from "@/hooks/useFilter";
 import { Pokemon } from "@/services/pokemons";
 
 const Cards = () => {
-  const { cardPokemons, successCardFetch, notFoundPokemon } = useFilter();
+  const { cardsPokemon, successCardFetch, notFoundPokemon } = useFilter();
 
   return (
     <>
@@ -22,36 +22,34 @@ const Cards = () => {
 
           {!notFoundPokemon &&
             successCardFetch &&
-            cardPokemons.map((pokemon: Pokemon, idx: number) => {
+            cardsPokemon.map((pokemon: Pokemon, idx: number) => {
               return (
-                <>
-                  <motion.span
-                    className="card-container"
-                    key={pokemon.id}
-                    style={{
-                      perspective: "1000px",
-                    }}
-                    initial={{ transform: "rotateY(90deg)", opacity: 0 }}
-                    viewport={{ once: true }}
-                    whileInView={{
-                      transform: "rotateY(0deg)",
-                      opacity: 1,
-                      transition: {
-                        delay: 0.15,
-                        type: "spring",
-                        damping: 30,
-                        stiffness: 130,
-                      },
-                    }}
-                  >
-                    <PokemonCard key={pokemon.id} pokemon={pokemon} />
-                  </motion.span>
-                </>
+                <motion.span
+                  className="card-container"
+                  key={pokemon.id}
+                  style={{
+                    perspective: "1000px",
+                  }}
+                  initial={{ transform: "rotateY(90deg)", opacity: 0 }}
+                  viewport={{ once: true }}
+                  whileInView={{
+                    transform: "rotateY(0deg)",
+                    opacity: 1,
+                    transition: {
+                      delay: 0.15,
+                      type: "spring",
+                      damping: 30,
+                      stiffness: 130,
+                    },
+                  }}
+                >
+                  <PokemonCard key={pokemon.id} pokemon={pokemon} />
+                </motion.span>
               );
             })}
 
           {notFoundPokemon && (
-            <p className="cardPokemons-card-error">
+            <p className="pokemon-cards-error">
               Ops, não encontramos seu Pokemon!
             </p>
           )}

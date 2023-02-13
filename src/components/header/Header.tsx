@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import { Dispatch, SetStateAction } from "react";
 import { Container } from "react-bootstrap";
 import Search from "./Search";
 

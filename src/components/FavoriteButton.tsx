@@ -11,7 +11,6 @@ type Props = {
 };
 
 const FavoriteButton = ({ active, setActive }: Props) => {
-
   const checkBackground = (filter: boolean): string => {
     return filter ? "#ffcc03" : "#BEBEBE";
   };
@@ -26,7 +25,7 @@ const FavoriteButton = ({ active, setActive }: Props) => {
 
   return (
     <>
-      <motion.a
+      <motion.span
         onClick={(e) => {
           handleClick();
         }}
@@ -39,12 +38,8 @@ const FavoriteButton = ({ active, setActive }: Props) => {
         }}
         className="favorite-icon pointer"
       >
-        <FaHeart
-          title="Heart Icon"
-          color={checkHeart(active)}
-          size="1.5rem"
-        />
-      </motion.a>
+        <FaHeart title="Heart Icon" color={checkHeart(active)} size="1.5rem" />
+      </motion.span>
     </>
   );
 };

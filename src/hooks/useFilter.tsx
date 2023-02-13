@@ -19,7 +19,7 @@ import React, {
 import { useFavorite } from "./useFavorite";
 
 type PokemonFilterContextType = {
-  cardPokemons: Pokemon[];
+  cardsPokemon: Pokemon[];
   firstRandomPokemonList: Pokemon[];
   notFoundPokemon: boolean;
   successCardFetch: boolean;
@@ -38,7 +38,7 @@ const PokemonFilterContext = createContext<PokemonFilterContextType>(
 export const PokemonFilterContextProvider = (props: {
   children?: ReactNode;
 }) => {
-  const [cardPokemons, setCardPokemons] = useState<Pokemon[]>([]);
+  const [cardsPokemon, setCardsPokemon] = useState<Pokemon[]>([]);
   const [firstRandomPokemonList, setFirstRandomPokemonList] = useState<
     Pokemon[]
   >([]);
@@ -52,7 +52,9 @@ export const PokemonFilterContextProvider = (props: {
 
   const [filters, setFilters] = useState<FilterType[]>([]);
   const [order, setOrder] = useState<OrderType>("name");
-
+  const [unFilteredPokemonList, setUnFilteredPokemonList] = useState<Pokemon[]>(
+    []
+  );
   const [activeFavoriteFilter, setActiveFavoriteFilter] =
     useState<boolean>(false);
 
@@ -70,17 +72,16 @@ export const PokemonFilterContextProvider = (props: {
     }
   };
 
-  const getCardsPokemonData = async (params: string) => {
-    try {
-      const pokemons = await fetchPokemon(params);
+  useEffect(() => {
+    getRandomPokemonList();
+  }, []);
 
-      if (pokemons.length > 0) {
-        setCardPokemons(pokemons);
-        setSuccessCardFetch(true);
-        setNotFoundPokemon(false);
-      } else {
-        setNotFoundPokemon(true);
-      }
+  const getCardsPokemonList = async (name: string) => {
+    try {
+      const pokemons = await fetchPokemon(name);
+
+      handleFiltersChange(pokemons);
+      setUnFilteredPokemonList(pokemons);
     } catch (error) {
       console.log(error);
       setSuccessCardFetch(false);
@@ -88,58 +89,60 @@ export const PokemonFilterContextProvider = (props: {
   };
 
   useEffect(() => {
-    getRandomPokemonList();
-  }, []);
-
-  useEffect(() => {
-    getCardsPokemonData(changeData);
+    setSuccessCardFetch(false);
+    getCardsPokemonList(changeData);
   }, [changeData]);
 
-  const handleFiltersChange = () => {
-    if (successCardFetch)
-      if (filters.length > 0) {
-        let filteredList: Pokemon[] = [];
+  const handleFiltersChange = (pokemons: Pokemon[]) => {
+    let favoritePokemonList: Pokemon[] = [];
+    let filteredPokemonList: Pokemon[] = [];
 
-        firstRandomPokemonList.forEach((pokemon) => {
-          if (filters.includes(pokemon.category)) {
-            filteredList.push(pokemon);
-          }
-        });
-
-        let orderCardPokemons = filteredList;
-
-        if (order.match("increase")) {
-          orderCardPokemons.sort((a, b) => a.id - b.id);
+    if (activeFavoriteFilter) {
+      pokemons.forEach((pokemon) => {
+        if (favorites.includes(pokemon.id)) {
+          favoritePokemonList.push(pokemon);
         }
+      });
+    } else {
+      favoritePokemonList = [...pokemons];
+    }
 
-        if (order.match("decrease")) {
-          orderCardPokemons.sort((a, b) => b.id - a.id);
+    if (filters.length > 0) {
+      favoritePokemonList.forEach((pokemon) => {
+        if (filters.includes(pokemon.category)) {
+          filteredPokemonList.push(pokemon);
         }
+      });
+    } else {
+      filteredPokemonList = [...favoritePokemonList];
+    }
 
-        setCardPokemons(filteredList);
-      } else {
-        let orderCardPokemons = [...firstRandomPokemonList];
+    if (order.match("increase")) {
+      filteredPokemonList.sort((a, b) => a.id - b.id);
+    }
+    if (order.match("decrease")) {
+      filteredPokemonList.sort((a, b) => b.id - a.id);
+    }
 
-        if (order.match("increase")) {
-          orderCardPokemons.sort((a, b) => a.id - b.id);
-        }
+    if (filteredPokemonList.length > 0) {
+      setCardsPokemon(filteredPokemonList);
+      setNotFoundPokemon(false);
+    } else {
+      setNotFoundPokemon(true);
+    }
 
-        if (order.match("decrease")) {
-          orderCardPokemons.sort((a, b) => b.id - a.id);
-        }
-        setCardPokemons(orderCardPokemons);
-      }
+    setSuccessCardFetch(true);
   };
 
   useEffect(() => {
-    handleFiltersChange();
-  }, [filters, order]);
+    handleFiltersChange(unFilteredPokemonList);
+  }, [filters, order, activeFavoriteFilter]);
 
   return (
     <PokemonFilterContext.Provider
       value={{
         setChangeData,
-        cardPokemons,
+        cardsPokemon,
         firstRandomPokemonList,
         successRandomFetch,
         notFoundPokemon,

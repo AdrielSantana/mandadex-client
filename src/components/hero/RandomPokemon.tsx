@@ -58,7 +58,7 @@ const RandomPokemon = () => {
   }, [successRandomFetch]);
 
   return (
-    <AnimatePresence initial={true} mode="wait">
+    <AnimatePresence initial={false} mode="wait">
       <motion.span
         className="random-pokemon-span"
         variants={pokemonAnimation}
@@ -72,6 +72,7 @@ const RandomPokemon = () => {
             alt="Random Pokemon"
             src={"/images/hero/random-pokemon-skeleton.png"}
             className="random-pokemon"
+            priority
             fill
           />
         )}
