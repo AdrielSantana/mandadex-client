@@ -6,14 +6,15 @@ import Order from "./Order";
 const FiltersArea = () => {
   return (
     <>
-      <section className="filtersArea-section">
+      <section id="filters" className="filtersArea-section">
         <Container className="filtersArea-container">
           <h1 className="filtersArea-title">
             Encontre seu <span>Pokemon!</span>
           </h1>
 
           <Order />
-          <Filters />
+
+          <Filters/>
         </Container>
       </section>
     </>

@@ -1,8 +1,15 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+
+module.exports = {
   experimental: {
     appDir: true,
   },
-}
-
-module.exports = nextConfig
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "desafio-estagiarios-pokemon-api-production.up.railway.app",
+      },
+    ],
+  },
+};

@@ -1,7 +1,22 @@
+"use client";
+import { useFilter } from "@/hooks/useFilter";
+import { ChangeEvent, useState } from "react";
 import Form from "react-bootstrap/Form";
-import Favorite from "../Favorite";
+import FavoriteButton from "../FavoriteButton";
 
 const Order = () => {
+  const { setOrder } = useFilter();
+  const [active, setActive] = useState<boolean>(false);
+
+  const { setActiveFavoriteFilter } = useFilter();
+
+  const handleFavoriteFilter = () => {
+    setActiveFavoriteFilter(active);
+  };
+
+  const handleSelect = (e: ChangeEvent<HTMLSelectElement>) => {
+    setOrder(e.target.value);
+  };
   return (
     <>
       <div className="order-div">
@@ -10,12 +25,13 @@ const Order = () => {
           <Form.Select
             bsPrefix={"order-select form-select"}
             aria-label="Select Order"
+            onChange={(e) => handleSelect(e)}
           >
-            <option value="name">Nome</option>
-            <option value="id">ID</option>
-            <option value="birthDate">Data de criação</option>
+            <option value="increase">Crescente</option>
+            <option value="decrease">Decrescente</option>
           </Form.Select>
-          <Favorite />
+          <a onClick={(e) => handleFavoriteFilter()}></a>
+          <FavoriteButton active={active} setActive={setActive} />
         </span>
       </div>
     </>

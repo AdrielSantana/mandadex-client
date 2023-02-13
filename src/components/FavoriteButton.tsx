@@ -1,11 +1,16 @@
 "use client";
+import { useFavorite } from "@/hooks/useFavorite";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
 import { FaHeart } from "react-icons/fa";
 
-const Favorite = () => {
-  const [filterFavorite, setFilterFavorite] = useState<boolean>(false);
+type Props = {
+  active: boolean;
+  setActive: Dispatch<SetStateAction<boolean>>;
+};
+
+const FavoriteButton = ({ active, setActive }: Props) => {
 
   const checkBackground = (filter: boolean): string => {
     return filter ? "#ffcc03" : "#BEBEBE";
@@ -16,7 +21,7 @@ const Favorite = () => {
   };
 
   const handleClick = () => {
-    setFilterFavorite(!filterFavorite);
+    setActive(!active);
   };
 
   return (
@@ -30,13 +35,13 @@ const Favorite = () => {
           scale: 0.95,
         }}
         style={{
-          backgroundColor: `${checkBackground(filterFavorite)}`,
+          backgroundColor: `${checkBackground(active)}`,
         }}
         className="favorite-icon pointer"
       >
         <FaHeart
           title="Heart Icon"
-          color={checkHeart(filterFavorite)}
+          color={checkHeart(active)}
           size="1.5rem"
         />
       </motion.a>
@@ -44,4 +49,4 @@ const Favorite = () => {
   );
 };
 
-export default Favorite;
+export default FavoriteButton;

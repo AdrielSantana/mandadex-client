@@ -1,49 +1,60 @@
 import Filter from "./Filter";
 
-type FilterType = {
+type FilterButtonType = {
   category: string;
+  name: string;
   color: string;
 };
 
-const filters: FilterType[] = [
+const filtersColor: FilterButtonType[] = [
   {
-    category: "Água",
+    category: "Water",
+    name: "Água",
     color: "#1052ED",
   },
   {
-    category: "Elétrico",
+    category: "Electric",
+    name: "Elétrico",
     color: "#A7A700",
   },
   {
-    category: "Fogo",
+    category: "Fire",
+    name: "Fogo",
     color: "#A80409",
   },
   {
-    category: "Grama",
+    category: "Grass",
+    name: "Grama",
     color: "#008A37",
   },
   {
-    category: "Gelo",
+    category: "Ice",
+    name: "Gelo",
     color: "#3B82A4",
   },
   {
-    category: "Inseto",
+    category: "Bug",
+    name: "Inseto",
     color: "#1E4F29",
   },
   {
     category: "Normal",
+    name: "Normal",
     color: "#7A535E",
   },
   {
-    category: "Psíquico",
+    category: "Psychic",
+    name: "Psíquico",
     color: "#A31A64",
   },
   {
-    category: "Pedra",
+    category: "Rock",
+    name: "Pedra",
     color: "#5A1E0D",
   },
   {
-    category: "Terra",
+    category: "Ground",
+    name: "Terra",
     color: "#9A5808",
   },
 ];
@@ -53,12 +64,13 @@ const Filters = () => {
     <>
       <p className="filters-title">Filtros</p>
       <div className="filters-div">
-        {filters.map((filter: FilterType, idx: number) => {
+        {filtersColor.map((filter: FilterButtonType, idx: number) => {
           return (
             <span key={idx} className="filter-button-span">
               <Filter
                 key={idx}
                 color={filter.color}
+                name={filter.name}
                 category={filter.category}
               />
             </span>

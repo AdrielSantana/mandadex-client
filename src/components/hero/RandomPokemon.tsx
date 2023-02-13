@@ -1,6 +1,9 @@
 "use client";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import { useFilter } from "@/hooks/useFilter";
+import { Pokemon } from "@/services/pokemons";
 
 const pokemonAnimation = {
   initial: {
@@ -21,7 +24,7 @@ const pokemonAnimation = {
     x: "12rem",
     opacity: 0,
     transition: {
-      duration: 0.1,
+      duration: 0.5,
       type: "spring",
       damping: 100,
       stiffness: 600,
@@ -30,6 +33,30 @@ const pokemonAnimation = {
 };
 
 const RandomPokemon = () => {
+  const [pokemon, setPokemon] = useState<Pokemon>();
+
+  const { firstRandomPokemonList, successRandomFetch } = useFilter();
+
+  const randomIndex = (): number => {
+    let index = Math.floor(Math.random() * firstRandomPokemonList.length);
+
+    if (index == firstRandomPokemonList.length) {
+      index--;
+    }
+
+    return index;
+  };
+
+  useEffect(() => {
+    if (successRandomFetch) {
+      setPokemon(firstRandomPokemonList[randomIndex()]);
+
+      setInterval(() => {
+        setPokemon(firstRandomPokemonList[randomIndex()]);
+      }, 7000);
+    }
+  }, [successRandomFetch]);
+
   return (
     <AnimatePresence initial={true} mode="wait">
       <motion.span
@@ -38,14 +65,26 @@ const RandomPokemon = () => {
         initial={"initial"}
         animate={"animate"}
         exit={"exit"}
-        key={0}
+        key={pokemon?.id ?? randomIndex()}
       >
-        <Image
-          alt="Random Pokemon"
-          src={"/images/hero/mewtwo.gif"}
-          className="random-pokemon"
-          fill
-        />
+        {!successRandomFetch && (
+          <Image
+            alt="Random Pokemon"
+            src={"/images/hero/random-pokemon-skeleton.png"}
+            className="random-pokemon"
+            fill
+          />
+        )}
+
+        {successRandomFetch && (
+          <Image
+            key={pokemon?.id}
+            alt="Random Pokemon"
+            src={pokemon?.image_url ?? ""}
+            className="random-pokemon"
+            fill
+          />
+        )}
       </motion.span>
     </AnimatePresence>
   );

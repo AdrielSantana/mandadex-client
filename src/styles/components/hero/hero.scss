@@ -1,6 +1,7 @@
 .hero-section {
   background: $custom-gradient-primary;
   width: 100%;
+  overflow: hidden;
 }
 
 .hero-container {
@@ -13,14 +14,14 @@
 }
 
 .random-pokemon-span {
-  width: 350px;
-  height: 350px;
+  width: 300px;
+  height: 300px;
   position: relative;
 }
 
 .random-pokemon {
   object-fit: contain;
-  object-position: right;
+  object-position: center;
 }
 
 .pokeball-hero {

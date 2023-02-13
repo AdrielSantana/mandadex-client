@@ -1,11 +1,16 @@
 "use client";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Form from "react-bootstrap/Form";
+import { useFilter } from "@/hooks/useFilter";
 
 const Search = () => {
+  const [pokemonName, setPokemonName] = useState<string>("");
+  const { setChangeData } = useFilter();
+
   const handleSearch = () => {
-    console.log("clicou no search");
+    setChangeData(pokemonName);
   };
 
   return (
@@ -32,6 +37,8 @@ const Search = () => {
 
         <Form.Group controlId="formBasicEmail">
           <Form.Control
+            value={pokemonName}
+            onChange={(e) => setPokemonName(e.target.value)}
             bsPrefix="search-bar form-control"
             type="text"
             placeholder="Buscar"

@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { Dispatch, SetStateAction } from "react";
 import { Container } from "react-bootstrap";
 import Search from "./Search";
 
@@ -11,7 +12,8 @@ const Header = () => {
       <header>
         <Container className="header-container">
           <Search />
-          <a href="#hero">
+
+          <a href="#filters">
             <Image alt="Logo" src={logo} className="logo" priority />
           </a>
         </Container>
