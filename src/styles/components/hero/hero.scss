@@ -14,8 +14,8 @@
 }
 
 .random-pokemon-span {
-  width: 300px;
-  height: 300px;
+  width: 280px;
+  height: 280px;
   position: relative;
 }
 
@@ -32,12 +32,5 @@
 @media (max-width: 767.5px) {
   .random-pokemon-span {
     margin-top: 2rem;
-  }
-}
-
-@media (max-width: 370px) {
-  .random-pokemon-span {
-    width: 280px;
-    height: 280px;
   }
 }

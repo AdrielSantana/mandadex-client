@@ -44,7 +44,8 @@ const PokemonCard = ({ pokemon }: Props) => {
             className="pokemon-image"
             alt="Pokemon"
             src={pokemon.image_url}
-            fill
+            width={200}
+            height={140}
           />
         </span>
         <span className="pokemon-name">{pokemon.name}</span>
