@@ -81,7 +81,9 @@ const RandomPokemon = () => {
           <Image
             key={pokemon?.id}
             alt="Random Pokemon"
-            src={pokemon?.image_url ?? ""}
+            src={
+              pokemon?.image_url ?? "/images/hero/random-pokemon-skeleton.png"
+            }
             className="random-pokemon"
             fill
           />

@@ -60,19 +60,18 @@ export const PokemonFilterContextProvider = (props: {
 
   const { favorites } = useFavorite();
 
-  const getRandomPokemonList = async () => {
-    try {
-      const pokemons = await fetchPokemons();
-
-      setFirstRandomPokemonList(pokemons);
-      setSuccessRandomFetch(true);
-    } catch (error) {
-      console.log(error);
-      setSuccessRandomFetch(false);
-    }
-  };
-
   useEffect(() => {
+    const getRandomPokemonList = async () => {
+      try {
+        const pokemons = await fetchPokemons();
+
+        setFirstRandomPokemonList(pokemons);
+        setSuccessRandomFetch(true);
+      } catch (error) {
+        console.log(error);
+        setSuccessRandomFetch(false);
+      }
+    };
     getRandomPokemonList();
   }, []);
 
