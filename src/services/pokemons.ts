@@ -19,9 +19,9 @@ export const fetchPokemons = async () => {
   return pokemons;
 };
 
-export const fetchPokemon = async (params: string) => {
+export const fetchPokemon = async (name: string) => {
   const pokemons: Pokemon[] = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}?name=${params}`
+    `${process.env.NEXT_PUBLIC_API_URL}?name=${name}`
   ).then((res) => res.json());
 
   return pokemons;

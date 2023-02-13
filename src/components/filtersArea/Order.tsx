@@ -11,7 +11,7 @@ const Order = () => {
   const { setActiveFavoriteFilter } = useFilter();
 
   const handleFavoriteFilter = () => {
-    setActiveFavoriteFilter(active);
+    setActiveFavoriteFilter(!active);
   };
 
   const handleSelect = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -30,8 +30,9 @@ const Order = () => {
             <option value="increase">Crescente</option>
             <option value="decrease">Decrescente</option>
           </Form.Select>
-          <a onClick={(e) => handleFavoriteFilter()}></a>
-          <FavoriteButton active={active} setActive={setActive} />
+          <a onClick={(e) => handleFavoriteFilter()}>
+            <FavoriteButton active={active} setActive={setActive} />
+          </a>
         </span>
       </div>
     </>
