@@ -33,7 +33,14 @@ const pokemonAnimation = {
 };
 
 const RandomPokemon = () => {
-  const [pokemon, setPokemon] = useState<Pokemon>();
+  const [pokemon, setPokemon] = useState<Pokemon>({
+    id: -1,
+    name: "",
+    category: "",
+    image_url: "/images/hero/random-pokemon-skeleton.png",
+    background_image_url: "",
+    created_at: "",
+  });
 
   const { firstRandomPokemonList, successRandomFetch } = useFilter();
 
@@ -65,7 +72,7 @@ const RandomPokemon = () => {
         initial={"initial"}
         animate={"animate"}
         exit={"exit"}
-        key={pokemon?.id ?? randomIndex()}
+        key={pokemon.id}
       >
         {!successRandomFetch && (
           <Image
@@ -73,7 +80,8 @@ const RandomPokemon = () => {
             src={"/images/hero/random-pokemon-skeleton.png"}
             className="random-pokemon"
             priority
-            fill
+            width={280}
+            height={280}
           />
         )}
 
@@ -81,11 +89,10 @@ const RandomPokemon = () => {
           <Image
             key={pokemon?.id}
             alt="Random Pokemon"
-            src={
-              pokemon?.image_url ?? "/images/hero/random-pokemon-skeleton.png"
-            }
+            src={pokemon.image_url}
             className="random-pokemon"
-            fill
+            width={280}
+            height={280}
           />
         )}
       </motion.span>

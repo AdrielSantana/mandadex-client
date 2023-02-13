@@ -1,3 +1,5 @@
+import useSWR from "swr";
+
 export type Pokemon = {
   id: number;
   name: string;
@@ -46,9 +48,9 @@ export type FilterType = string;
 export type OrderType = string;
 
 export const fetchPokemons = async () => {
-  const pokemons: Pokemon[] = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}`
-  ).then((res) => res.json());
+  const pokemons: Pokemon[] = await fetch(`${process.env.NEXT_PUBLIC_API_URL}`)
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
 
   return pokemons;
 };
@@ -56,7 +58,9 @@ export const fetchPokemons = async () => {
 export const fetchPokemon = async (name: string) => {
   const pokemons: Pokemon[] = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}?name=${name}`
-  ).then((res) => res.json());
+  )
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
 
   return pokemons;
 };
