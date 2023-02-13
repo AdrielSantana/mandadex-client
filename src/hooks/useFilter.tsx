@@ -66,7 +66,10 @@ export const PokemonFilterContextProvider = (props: {
         const pokemons = await fetchPokemons();
 
         setFirstRandomPokemonList(pokemons);
-        setSuccessRandomFetch(true);
+
+        if (pokemons) {
+          setSuccessRandomFetch(true);
+        }
       } catch (error) {
         console.log(error);
         setSuccessRandomFetch(false);
@@ -134,7 +137,9 @@ export const PokemonFilterContextProvider = (props: {
   };
 
   useEffect(() => {
-    handleFiltersChange(unFilteredPokemonList);
+    if (unFilteredPokemonList.length > 0) {
+      handleFiltersChange(unFilteredPokemonList);
+    }
   }, [filters, order, activeFavoriteFilter]);
 
   return (

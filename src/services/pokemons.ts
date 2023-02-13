@@ -50,7 +50,7 @@ export type OrderType = string;
 export const fetchPokemons = async () => {
   const pokemons: Pokemon[] = await fetch(`${process.env.NEXT_PUBLIC_API_URL}`)
     .then((res) => res.json())
-    .catch((err) => err.json());
+    .catch((err) => console.log(err));
 
   return pokemons;
 };
@@ -60,7 +60,7 @@ export const fetchPokemon = async (name: string) => {
     `${process.env.NEXT_PUBLIC_API_URL}?name=${name}`
   )
     .then((res) => res.json())
-    .catch((err) => err.json());
+    .catch((err) => console.log(err));
 
   return pokemons;
 };
