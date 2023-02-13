@@ -80,8 +80,8 @@ export const PokemonFilterContextProvider = (props: {
     try {
       const pokemons = await fetchPokemon(name);
 
-      setUnFilteredPokemonList(pokemons);
       handleFiltersChange(pokemons);
+      setUnFilteredPokemonList(pokemons);
     } catch (error) {
       console.log(error);
       setSuccessCardFetch(false);
