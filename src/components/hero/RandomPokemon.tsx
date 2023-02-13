@@ -73,7 +73,8 @@ const RandomPokemon = () => {
             src={"/images/hero/random-pokemon-skeleton.png"}
             className="random-pokemon"
             priority
-            fill
+            width={280}
+            height={280}
           />
         )}
 
@@ -85,7 +86,8 @@ const RandomPokemon = () => {
               pokemon?.image_url ?? "/images/hero/random-pokemon-skeleton.png"
             }
             className="random-pokemon"
-            fill
+            width={280}
+            height={280}
           />
         )}
       </motion.span>
