@@ -1,4 +1,13 @@
+"use client";
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "@/styles/main.scss";
+
+import { AnalyticsWrapper } from "./components/analytics";
+
+import { FavoriteContextProvider } from "@/hooks/useFavorite";
+
 import { Montserrat } from "@next/font/google";
+import { PokemonFilterContextProvider } from "@/hooks/useFilter";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -15,7 +24,14 @@ export default function RootLayout({
   return (
     <html className={montserrat.className} lang="pt-br">
       <head />
-      <body>{children}</body>
+      <body>
+        <FavoriteContextProvider>
+          <PokemonFilterContextProvider>
+            {children}
+          </PokemonFilterContextProvider>
+        </FavoriteContextProvider>
+        <AnalyticsWrapper />
+      </body>
     </html>
   );
 }

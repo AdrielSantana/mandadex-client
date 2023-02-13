@@ -1,2 +1,51 @@
 @import "./assets/colors.scss";
 
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: $custom-color-dark;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: $custom-color-secondary;
+  border-radius: 2rem;
+}
+::selection {
+  color: $custom-color-dark;
+  background: $custom-color-secondary;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+html,
+body {
+  height: auto;
+  width: 100%;
+  color: $custom-color-white;
+}
+
+.favorite-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 64px;
+  filter: drop-shadow(0px 4px 4px $custom-color-shadow);
+}
+
+@import "./components/header/header.scss";
+@import "./components/hero/hero.scss";
+@import "./components/filtersArea/filtersArea.scss";
+@import "./components/cards/cards.scss";
+@import "./components/footer/footer.scss";
