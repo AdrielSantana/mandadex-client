@@ -4,7 +4,7 @@
 
 Projeto para desafio da Mandarin utilizando a própria Pokemon API fornecida.
 
-#### Para melhor visualização, aqui vai o link do site: [MandaDex](https://mandadex-client.vercel.app)
+#### Para melhor visualização, aqui vai o link do site: [MandaDex](https://mandadex.adrielsan.pro)
 ### Lista das tecnologias que utilizei:
 
 * TypeScript
